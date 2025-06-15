@@ -19,16 +19,14 @@
     "access": "public"
   },
   "scripts": {
-    "dev": "tsx src/index.ts",
+    "dev": "tsx src/cli.ts",
     "prebuild": "rm -rf dist",
     "build": "tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json",
     "postbuild": "tsc-alias -p tsconfig.build.json",
     "type-check": "tsc --noEmit",
-    "start": "node dist/cli.js",
-    "lint": "eslint --ext .ts",
-    "lint:fix": "eslint --ext .ts --fix",
-    "format": "prettier .",
-    "format:fix": "prettier --write .",
+    "tsro": "node dist/cli.js",
+    "lint": "eslint --ext .ts --fix",
+    "format": "prettier **/*.ts --write",
     "test": "tsx ./test.ts",
     "prepublishOnly": "pnpm build",
     "prepare": "husky"
@@ -84,8 +82,8 @@
   },
   "lint-staged": {
     "*.ts": [
-      "pnpm lint:fix",
-      "pnpm format:fix"
+      "pnpm lint",
+      "pnpm format"
     ]
   }
 }

@@ -1,9 +1,10 @@
-import eslint from "@eslint/js";
-import eslintConfigPrettier from "eslint-config-prettier";
+import tseslint from "typescript-eslint";
+import { globalIgnores } from "eslint/config";
 import perfectionist from "eslint-plugin-perfectionist";
 import unusedImports from "eslint-plugin-unused-imports";
-import { globalIgnores } from "eslint/config";
-import tseslint from "typescript-eslint";
+import eslintConfigPrettier from "eslint-config-prettier";
+
+import eslint from "@eslint/js";
 
 export default tseslint.config(
   globalIgnores(["dist/*", "src/test/*"]),
@@ -50,11 +51,11 @@ export default tseslint.config(
       "perfectionist/sort-imports": [
         "error",
         {
-          type: "alphabetical",
+          type: "line-length",
           order: "asc",
           fallbackSort: { type: "unsorted" },
           ignoreCase: true,
-          internalPattern: ["^@/.*"],
+          internalPattern: ["^@.*"],
           groups: [
             ["builtin", "external"],
             ["internal-type", "internal"],
