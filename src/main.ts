@@ -1,1 +1,1 @@
-export { tsro } from "./tsro";
+export { tsro, type Config } from "./tsro";
