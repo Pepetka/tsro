@@ -1,0 +1,89 @@
+{
+  "name": "tsro",
+  "version": "0.1.0",
+  "description": "A CLI utility for TypeScript projects that scans your source code, detects orphaned files, and removes them. Supports dry runs and custom entry points.",
+  "type": "module",
+  "types": "./dist/main.d.ts",
+  "bin": {
+    "tsro": "dist/cli.js"
+  },
+  "exports": {
+    ".": "./dist/main.js"
+  },
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "prebuild": "rm -rf dist",
+    "build": "tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json",
+    "postbuild": "tsc-alias -p tsconfig.build.json",
+    "type-check": "tsc --noEmit",
+    "start": "node dist/cli.js",
+    "lint": "eslint --ext .ts",
+    "lint:fix": "eslint --ext .ts --fix",
+    "format": "prettier .",
+    "format:fix": "prettier --write .",
+    "test": "tsx ./test.ts",
+    "prepublishOnly": "pnpm build",
+    "prepare": "husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pepetka/tsro.git"
+  },
+  "keywords": [
+    "typescript",
+    "test",
+    "stories",
+    "cleanup",
+    "cli",
+    "orphan",
+    "tooling",
+    "dead-code",
+    "tsro",
+    "tsr"
+  ],
+  "author": "Pepetka <mr.fakepepe@yandex.ru>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Pepetka/tsro/issues"
+  },
+  "homepage": "https://github.com/Pepetka/tsro#readme",
+  "packageManager": "pnpm@10.9.0",
+  "dependencies": {
+    "commander": "^14.0.0",
+    "fast-glob": "^3.3.3",
+    "picocolors": "^1.1.1",
+    "yocto-spinner": "^1.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.28.0",
+    "@types/node": "^24.0.1",
+    "eslint": "^9.28.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-perfectionist": "^4.14.0",
+    "eslint-plugin-unused-imports": "^4.1.4",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
+    "prettier": "^3.5.3",
+    "tsc-alias": "^1.8.16",
+    "tsx": "^4.20.2",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.34.0"
+  },
+  "peerDependencies": {
+    "typescript": ">=4.0.0"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "pnpm lint:fix",
+      "pnpm format:fix"
+    ]
+  }
+}
