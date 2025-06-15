@@ -1,6 +1,6 @@
 {
   "name": "tsro",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A CLI utility for TypeScript projects that scans your source code, detects orphaned files, and removes them. Supports dry runs and custom entry points.",
   "type": "module",
   "types": "./dist/main.d.ts",
