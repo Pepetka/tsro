@@ -9,6 +9,7 @@ import { formatCount } from "./utils/formatCount";
 import { loadTSConfig } from "./utils/loadTsConfig";
 import { createNodeJsLogger } from "./utils/logger";
 import { CliError, CliResultError } from "./utils/error";
+import { collectDiagnostics } from "./modules/diagnostics";
 
 const relativeToCwd = (fileName: string) => relative(cwd(), fileName).replaceAll("\\", "/");
 
@@ -18,6 +19,7 @@ export interface Config {
   configFile?: string;
   projectRoot?: string;
   logger?: Logger;
+  ignoreLibImports?: boolean;
 }
 
 export const tsro = async (config: Config) => {
@@ -27,6 +29,7 @@ export const tsro = async (config: Config) => {
     projectRoot = cwd(),
     system = ts.sys,
     logger = createNodeJsLogger(),
+    ignoreLibImports = true,
   } = config;
 
   const { options, fileNames, configPath, error } = await loadTSConfig(
@@ -34,10 +37,6 @@ export const tsro = async (config: Config) => {
     configFile,
     system,
   );
-
-  logger.write(pc.gray(JSON.stringify(options, null, 2) + "\n"));
-
-  logger.write(pc.gray(JSON.stringify(fileNames, null, 2) + "\n"));
 
   if (fileNames.length === 0) {
     logger.write(pc.red(pc.bold("There are no files in the project\n")));
@@ -49,9 +48,22 @@ export const tsro = async (config: Config) => {
     `${pc.blue("tsconfig")} ${error ? "using default options" : relativeToCwd(configPath)}\n`,
   );
 
-  logger.write(pc.gray(`Found ${formatCount(fileNames.length, "patterns file")}\n`));
+  logger.write(pc.gray(`Project has ${formatCount(fileNames.length, "file")}\n`));
 
   const output = new CliOutput({ logger, mode, projectRoot });
+
+  const diagnostics = collectDiagnostics({
+    fileNames,
+    options,
+    ignoreLibImports,
+  });
+
+  for (const diagnostic of diagnostics) {
+    if (mode == "write") {
+      system.deleteFile?.(diagnostic.file);
+    }
+    output.deleteFile(diagnostic);
+  }
 
   const { code } = output.done();
 

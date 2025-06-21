@@ -1,6 +1,6 @@
 import { stdout } from "node:process";
 
-import { Logger } from "@src/types/logger";
+import { Logger } from "@appTypes/logger";
 
 export const createNodeJsLogger = (): Logger =>
   "isTTY" in stdout && stdout.isTTY

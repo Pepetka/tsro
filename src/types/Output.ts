@@ -1,4 +1,6 @@
+import { DiagnosticInfo } from "./diagnostic";
+
 export interface Output {
-  deleteFile(file: string): void;
+  deleteFile(diagnostic: DiagnosticInfo): void;
   done(): void;
 }

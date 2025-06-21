@@ -11,15 +11,9 @@ importers:
       commander:
         specifier: ^14.0.0
         version: 14.0.0
-      fast-glob:
-        specifier: ^3.3.3
-        version: 3.3.3
       picocolors:
         specifier: ^1.1.1
         version: 1.1.1
-      yocto-spinner:
-        specifier: ^1.0.0
-        version: 1.0.0
     devDependencies:
       '@eslint/js':
         specifier: ^9.28.0
@@ -981,14 +975,6 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
 
-  yocto-spinner@1.0.0:
-    resolution: {integrity: sha512-VPX8P/+Z2Fnpx8PC/JELbxp3QRrBxjAekio6yulGtA5gKt9YyRc5ycCb+NHgZCbZ0kx9KxwZp7gC6UlrCcCdSQ==}
-    engines: {node: '>=18.19'}
-
-  yoctocolors@2.1.1:
-    resolution: {integrity: sha512-GQHQqAopRhwU8Kt1DDM8NjibDXHC8eoh1erhGAJPEyveY9qqVeXvVikNKrDz69sHowPMorbPUrH/mx8c50eiBQ==}
-    engines: {node: '>=18'}
-
 snapshots:
 
   '@esbuild/aix-ppc64@0.25.5':
@@ -1844,9 +1830,3 @@ snapshots:
   yaml@2.8.0: {}
 
   yocto-queue@0.1.0: {}
-
-  yocto-spinner@1.0.0:
-    dependencies:
-      yoctocolors: 2.1.1
-
-  yoctocolors@2.1.1: {}
