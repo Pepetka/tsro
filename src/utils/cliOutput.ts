@@ -1,8 +1,9 @@
 import pc from "picocolors";
 import { relative } from "node:path";
 
-import { Output } from "@src/types/Output.js";
-import { Logger } from "@src/types/logger.js";
+import { Output } from "@appTypes/output";
+import { Logger } from "@appTypes/logger";
+import { DiagnosticInfo } from "@appTypes/diagnostic";
 
 import { formatCount } from "./formatCount";
 
@@ -11,6 +12,7 @@ export class CliOutput implements Output {
   #projectRoot: string;
   #logger: Logger;
   #mode: "check" | "write";
+  #previousFile: string | undefined;
 
   constructor({
     logger,
@@ -26,9 +28,17 @@ export class CliOutput implements Output {
     this.#projectRoot = projectRoot;
   }
 
-  deleteFile(file: string): void {
-    this.#logger.write(`${pc.yellow("file")}   ${this.#relativePath(file)}\n`);
-    this.#deletedFileCount++;
+  deleteFile(diagnostic: DiagnosticInfo): void {
+    const { file, code, line, char } = diagnostic;
+    this.#logger.write(
+      `${pc.yellow("import")} ${this.#relativePath(file)}:${pc.gray(
+        `${line}:${char}`.padEnd(7),
+      )} ${pc.gray(`'${code}'`)}\n`,
+    );
+    if (this.#previousFile !== file) {
+      this.#deletedFileCount++;
+    }
+    this.#previousFile = file;
   }
 
   done() {

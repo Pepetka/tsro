@@ -4,11 +4,12 @@ import { getArgs } from "./modules/args";
 import { CliError, CliResultError } from "./utils/error";
 
 const main = async () => {
-  const { write, project } = await getArgs();
+  const { write, project, ignoreLibImports } = await getArgs();
 
   await tsro({
     configFile: project || "tsconfig.json",
     mode: write ? "write" : "check",
+    ignoreLibImports,
   }).catch((error) => {
     if (error instanceof CliResultError || error instanceof CliError) {
       process.exitCode = 1;

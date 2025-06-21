@@ -3,4 +3,5 @@ export interface CliArgs {
   write: boolean;
   export?: string;
   debug: boolean;
+  ignoreLibImports: boolean;
 }
