@@ -1,7 +1,7 @@
 {
   "name": "tsro",
   "version": "0.3.0",
-  "description": "A CLI utility for TypeScript projects that scans your source code, detects orphaned files, and removes them. Supports dry runs and custom entry points.",
+  "description": "TypeScript Remove Orphaned (tsro) is a CLI utility and library for TypeScript projects that scans source files to detect files containing unused imports (so-called “orphaned files”). It enables identifying and removing such imports to streamline code cleanup.",
   "type": "module",
   "types": "./dist/main.d.ts",
   "bin": {
