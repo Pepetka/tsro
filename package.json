@@ -20,7 +20,7 @@
   },
   "scripts": {
     "dev": "tsx src/cli.ts",
-    "prebuild": "rm -rf dist",
+    "prebuild": "rimraf dist",
     "build": "tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json",
     "postbuild": "tsc-alias -p tsconfig.build.json",
     "type-check": "tsc --noEmit -p tsconfig.build.json",
@@ -70,6 +70,7 @@
     "lint-staged": "^16.1.2",
     "mock-fs": "^5.5.0",
     "prettier": "^3.5.3",
+    "rimraf": "^6.0.1",
     "tsc-alias": "^1.8.16",
     "tsx": "^4.20.2",
     "typescript": "^5.8.3",
