@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/Pepetka/tsro/compare/v0.2.0...v0.3.0) (2025-06-22)
+
+
+### Features
+
+* added deletion of orphan files ([#4](https://github.com/Pepetka/tsro/issues/4)) ([da7e67e](https://github.com/Pepetka/tsro/commit/da7e67ee365b040362685167d277e802c13c3d31))
+
 ## [0.2.0](https://github.com/Pepetka/tsro/compare/v0.1.1...v0.2.0) (2025-06-15)
 
 
