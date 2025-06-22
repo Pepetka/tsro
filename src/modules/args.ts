@@ -1,7 +1,7 @@
 import { Command } from "commander";
 
-import { CliArgs } from "@src/types/args";
-import { getVersion } from "@src/utils/getVersion";
+import { CliArgs } from "@appTypes/args";
+import { getVersion } from "@utils/getVersion";
 
 const program = new Command();
 
@@ -10,12 +10,13 @@ export const getArgs = async (): Promise<CliArgs> => {
 
   program
     .name("sweep")
-    .description("CLI tool to find and remove orphaned test/stories files in TypeScript projects.")
+    .description(
+      "TypeScript Remove Orphaned (tsro) is a CLI utility for TypeScript projects that scans your source code, detects orphaned files, and removes them. Supports dry runs and custom entry points.",
+    )
     .version(version, "-v, --version")
     .option("-p, --project <file>", "Path to tsconfig file")
     .option("-w, --write", "Write changes to files", false)
-    .option("--debug", "Debug mode", false)
-    .option("--export <file>", "Export result to json file");
+    .option("--no-ignoreLibImports", "Ignore lib imports");
 
   return program.parse().opts();
 };
