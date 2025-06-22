@@ -16,7 +16,7 @@ export const getArgs = async (): Promise<CliArgs> => {
     .version(version, "-v, --version")
     .option("-p, --project <file>", "Path to tsconfig file")
     .option("-w, --write", "Write changes to files", false)
-    .option("--ignoreLibImports", "Ignore lib imports", true);
+    .option("--no-ignoreLibImports", "Ignore lib imports");
 
   return program.parse().opts();
 };
