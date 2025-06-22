@@ -9,14 +9,14 @@ export const getArgs = async (): Promise<CliArgs> => {
   const version = await getVersion();
 
   program
-    .name("sweep")
+    .name("tsro")
     .description(
-      "TypeScript Remove Orphaned (tsro) is a CLI utility for TypeScript projects that scans your source code, detects orphaned files, and removes them. Supports dry runs and custom entry points.",
+      "TypeScript Remove Orphaned (tsro) is a CLI utility and library for TypeScript projects that scans source files to detect files containing unused imports (so-called “orphaned files”). It enables identifying and removing such imports to streamline code cleanup.",
     )
     .version(version, "-v, --version")
-    .option("-p, --project <file>", "Path to tsconfig file")
-    .option("-w, --write", "Write changes to files", false)
-    .option("--no-ignoreLibImports", "Ignore lib imports");
+    .option("-p, --project <file>", "path to tsconfig file")
+    .option("-w, --write", "delete orphaned files")
+    .option("--no-ignoreLibImports", "no ignore lib imports");
 
   return program.parse().opts();
 };
