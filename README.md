@@ -1,20 +1,20 @@
 # tsro
 
-TypeScript Remove Orphaned (tsro) is a CLI utility and library for TypeScript projects that scans source files to detect files containing unused imports (so-called “orphaned files”). It enables identifying and removing such imports to streamline code cleanup.
+TypeScript Remove Orphaned (tsro) is a CLI utility and library for TypeScript projects that detects and removes files containing invalid imports — imports that refer to nonexistent entities or nonexistent modules.
 
 ## Features
 
 ###  🕵️  Find unused code
 
-The utility scans the entire project using information from `tsconfig.json` and the TypeScript Compiler API to identify files containing unused imports. These files are considered “orphaned” because they do not affect the codebase and occupy space unnecessarily.
+The utility scans the entire project using information from `tsconfig.json` and the TypeScript Compiler API to identify files that contain imports referencing non-existent modules or entities. These files are considered “orphaned” because their imports are broken, and they are often leftover from removed or refactored code.
 
 ### 🗑️ Remove unused code automatically
 
-When the corresponding option (`--write` flag) is enabled, tsro deletes the detected orphan files from the project, helping keep the codebase clean and reducing technical debt.
+When the `--write` flag is enabled, tsro deletes the files containing broken imports from the project, helping keep the codebase clean and free of leftover or obsolete files.
 
 ### 🚀 Works out of the box
 
-The tool requires no separate configuration file or complex setup. A valid `tsconfig.json` is sufficient, simplifying integration into existing projects and speeding up adoption.
+The tool requires no separate configuration or setup. A valid `tsconfig.json` is enough to analyze the project, making it easy to integrate and use in existing codebases.
 
 ## Installation
 
@@ -79,7 +79,7 @@ The `--write` flag enables actual deletion of these files from the project.
 
 #### `--no-ignoreLibImports`
 
-By default, tsro skips imports from libraries (node_modules) to avoid resolution errors — in some cases, the tool may incorrectly determine that a library doesn’t exist or doesn’t export the used entity.
+By default, tsro skips imports from libraries to avoid resolution errors — in some cases, the tool may incorrectly determine that a library doesn’t exist or doesn’t export the used entity.
 The `--no-ignoreLibImports` flag disables this behavior and enables analysis of library imports.
 
 > [!WARNING]

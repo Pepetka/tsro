@@ -11,7 +11,7 @@ export const getArgs = async (): Promise<CliArgs> => {
   program
     .name("tsro")
     .description(
-      "TypeScript Remove Orphaned (tsro) is a CLI utility and library for TypeScript projects that scans source files to detect files containing unused imports (so-called “orphaned files”). It enables identifying and removing such imports to streamline code cleanup.",
+      "TypeScript Remove Orphaned (tsro) is a CLI utility and library for TypeScript projects that detects and removes files containing invalid imports — imports that refer to nonexistent entities or nonexistent modules.",
     )
     .version(version, "-v, --version")
     .option("-p, --project <file>", "path to tsconfig file")
