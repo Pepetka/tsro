@@ -1,7 +1,6 @@
 export interface CliArgs {
   project?: string;
-  write: boolean;
+  write?: boolean;
   export?: string;
-  debug: boolean;
-  ignoreLibImports: boolean;
+  ignoreLibImports?: boolean;
 }
