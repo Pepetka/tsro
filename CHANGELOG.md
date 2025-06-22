@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.2](https://github.com/Pepetka/tsro/compare/v0.3.1...v0.3.2) (2025-06-22)
+
+
+### Bug Fixes
+
+* fixed dist cleanup script ([459ccf5](https://github.com/Pepetka/tsro/commit/459ccf53e94cc132096741a830dcb2cff7dd78f7))
+
 ## [0.3.1](https://github.com/Pepetka/tsro/compare/v0.3.0...v0.3.1) (2025-06-22)
 
 
