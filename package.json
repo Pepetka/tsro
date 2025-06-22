@@ -1,6 +1,6 @@
 {
   "name": "tsro",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "TypeScript Remove Orphaned (tsro) is a CLI utility and library for TypeScript projects that detects and removes files containing invalid imports — imports that refer to nonexistent entities or nonexistent modules.",
   "type": "module",
   "types": "./dist/main.d.ts",
