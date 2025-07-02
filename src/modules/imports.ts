@@ -28,6 +28,12 @@ export const validateImportsInFile = (
     const start = node.moduleSpecifier.getStart();
     const { line, character } = sourceFile.getLineAndCharacterOfPosition(start);
 
+    const isLib = checkLib(importPath, aliases);
+
+    if (isLib && ignoreLibImports) {
+      return;
+    }
+
     if (!moduleSymbol) {
       diagnostics.push({
         file: sourceFile.fileName,
@@ -35,12 +41,6 @@ export const validateImportsInFile = (
         line: line + 1,
         char: character + 1,
       });
-      return;
-    }
-
-    const isLib = checkLib(importPath, aliases);
-
-    if (isLib && ignoreLibImports) {
       return;
     }
 

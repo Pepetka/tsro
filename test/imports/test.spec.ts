@@ -48,7 +48,7 @@ import { something2 } from "@test/exports/non-existent-file-2";
 // ✅ Alias. Local Named Imports
 import { namedConst3 } from "@test/exports/basic";
 
-// ✅ Full re-export
+// ❌ Full re-export
 import {
   namedConstB2,
   namedFunctionB2,

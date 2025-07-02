@@ -1,6 +1,6 @@
 export const checkLib = (importPath: string, aliases: string[]): boolean => {
-  const aliasPattern = aliases.map((alias) => alias.replace("*", "(.*)"));
-  const match = importPath.match(new RegExp(`^${aliasPattern}$`));
+  const aliasPatterns = aliases.map((alias) => alias.replace("*", "(.*)"));
+  const match = aliasPatterns.some((pattern) => importPath.match(new RegExp(`^${pattern}$`)));
 
   const isSourceFile = importPath.startsWith("./") || importPath.startsWith("../") || match;
 
