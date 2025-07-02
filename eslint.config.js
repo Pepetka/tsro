@@ -7,7 +7,7 @@ import eslintConfigPrettier from "eslint-config-prettier";
 import eslint from "@eslint/js";
 
 export default tseslint.config(
-  globalIgnores(["dist/*", "src/test/*"]),
+  globalIgnores(["dist/*", "test/*"]),
   eslint.configs.recommended,
   tseslint.configs.recommended,
   {
@@ -32,6 +32,8 @@ export default tseslint.config(
         },
       ],
       "@typescript-eslint/no-require-imports": "warn",
+      "no-useless-escape": "off",
+      "no-control-regex": "off",
     },
   },
   {
